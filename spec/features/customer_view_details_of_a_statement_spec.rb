@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User view details of a statement', type: :feature do
+RSpec.describe 'Customer view details of a statement', type: :feature do
   let(:customer) { create(:customer) }
 
   context 'when no statement item is availiable on statement#show' do

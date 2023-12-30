@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User view month statements', type: :feature do
+RSpec.describe 'Customer view month statements', type: :feature do
   let(:customer) { create(:customer) }
 
   before { sign_in(customer) }

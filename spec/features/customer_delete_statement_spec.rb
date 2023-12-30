@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User deletes a statement', type: :feature do
+RSpec.describe 'Customer deletes a statement', type: :feature do
   let(:customer) { create(:customer) }
   let(:statement) { create(:statement, customer:) }
 

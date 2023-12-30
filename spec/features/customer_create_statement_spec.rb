@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User create statement', type: :feature do
+RSpec.describe 'Customer create statement', type: :feature do
   let(:customer) { create(:customer) }
 
   before do

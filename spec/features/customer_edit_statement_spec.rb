@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User edit statement', type: :feature do
+RSpec.describe 'Customer edit statement', type: :feature do
   let(:customer) { create(:customer) }
   let(:statement) { create(:statement, customer:) }
   let(:statement_item) { create(:statement_item, statement:) }
