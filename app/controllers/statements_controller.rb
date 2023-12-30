@@ -58,7 +58,7 @@ class StatementsController < ApplicationController
   private
 
   def set_statement
-    @statement = Statement.find(params[:id])
+    @statement = current_customer.statements.find(params[:id])
   end
 
   def statement_params

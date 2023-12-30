@@ -1,0 +1,40 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "2fb250155b049b3ff173ef5acf31ada2ddf014af62a3d88cd709d2b93aaf0818",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/statements/show.html.erb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => current_customer.statements.find(params[:id]), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "StatementsController",
+          "method": "show",
+          "line": 11,
+          "file": "app/controllers/statements_controller.rb",
+          "rendered": {
+            "name": "statements/show",
+            "file": "app/views/statements/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "statements/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2023-12-30 13:11:29 +0000",
+  "brakeman_version": "6.1.1"
+}
