@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+  <%= f.label :transaction_type %>
+  <%= f.select :transaction_type, options_for_select(['income', 'expenditure'], f.object.transaction_type) %>
+  <%= f.hidden_field :id %>
+  <%= f.label 'Remove item' %>
+  <%= f.check_box :_destroy, class: 'remove-item' %>
+</div>

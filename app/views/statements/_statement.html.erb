@@ -1,17 +1,65 @@
-<div id="<%= dom_id statement %>">
-  <p>
+<div id="<%= dom_id statement %>" class="container mt-4">
+  <p class="mb-2">
     <strong>Disposable income:</strong>
-    <%= statement.disposable_income %>
+    £<%= statement.disposable_income %>
   </p>
 
-  <p>
+  <p class="mb-2">
     <strong>Ie rating:</strong>
     <%= statement.ie_rating %>
   </p>
 
-  <p>
+  <p class="mb-2">
     <strong>Customer:</strong>
-    <%= statement.customer_id %>
+    <%= statement.customer.email %>
   </p>
 
+  <p class="mb-2">
+    <strong>Creation date:</strong>
+    <%= statement.created_at %>
+  </p>
+
+  <% if @statement&.statement_items.blank? %>
+    <p class="mb-2">No statement items...</p>
+  <% else %>
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Income</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @statement.statement_items.select { |i| i.transaction_type == 'income' }.each do |item| %>
+              <tr>
+                <td><%= item.title %></td>
+                <td>£<%= item.amount %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Expenditure</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @statement.statement_items.select { |i| i.transaction_type == 'expenditure' }.each do |item| %>
+              <tr>
+                <td><%= item.title %></td>
+                <td>£<%= item.amount %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
 </div>

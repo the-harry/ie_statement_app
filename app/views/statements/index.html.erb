@@ -1,14 +1,37 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+  <p class="text-success"><%= notice %></p>
 
-<h1>Statements</h1>
+  <h1 class="mb-4">My Statements</h1>
+  <h2><%= Date.today.strftime("%B") %></h2>
 
-<div id="statements">
-  <% @statements.each do |statement| %>
-    <%= render statement %>
-    <p>
-      <%= link_to "Show this statement", statement %>
-    </p>
-  <% end %>
+  <%= link_to "New statement", new_statement_path, class: "btn btn-primary mt-4" %>
+
+  <div id="statements" class="mt-4">
+    <% if @statements.blank? %>
+      <p>No statements filed yet.</p>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date Of Creation</th>
+            <th>I&E Rating</th>
+            <th>Disposable Income</th>
+            <th>View Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @statements.each do |statement| %>
+            <tr>
+              <td><%= statement.created_at %></td>
+              <td><%= statement.ie_rating %></td>
+              <td>£<%= statement.disposable_income %></td>
+              <td>
+                <%= link_to '👀', statement_path(statement), class: "btn btn-outline-secondary" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New statement", new_statement_path %>
