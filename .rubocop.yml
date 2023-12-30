@@ -1,0 +1,32 @@
+AllCops:
+  TargetRubyVersion: 3.3.0
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+  NewCops: enable
+
+Metrics/MethodLength:
+  Max: 20
+
+Layout/LineLength:
+  Max: 80
+  Exclude:
+    - spec/**/*
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Bundler/OrderedGems:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
