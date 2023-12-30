@@ -4,10 +4,7 @@ class StatementsController < ApplicationController
   before_action :set_statement, only: %i[show edit update destroy]
 
   def index
-    @statements = current_customer.statements.where(
-      'created_at > ? AND created_at < ?',
-      Time.now.beginning_of_month, Time.now.end_of_month
-    )
+    @statements = current_customer.this_month_statements
   end
 
   def show; end

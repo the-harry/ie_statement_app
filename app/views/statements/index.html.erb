@@ -4,6 +4,17 @@
   <h1 class="mb-4">My Statements</h1>
   <h2><%= Date.today.strftime("%B") %></h2>
 
+  <div class="row mt-4">
+    <div class="col">
+      <h3>This month's total Disposable Income</h3>
+      <h4>£<%= current_customer.current_month_disposable_income %></h4>
+    </div>
+    <div class="col">
+      <h3>This month's total I&E Band</h3>
+      <h4><%= current_customer.current_month_ie_band %></h4>
+    </div>
+  </div>
+
   <%= link_to "New statement", new_statement_path, class: "btn btn-primary mt-4" %>
 
   <div id="statements" class="mt-4">
