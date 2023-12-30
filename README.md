@@ -1,24 +1,66 @@
-# README
+# I&E statement app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Stack
 
-Things you may want to cover:
+- `Ruby 3.3.0`
+- `Rails 7.1.2`
+- `Postgres 13.1-alpine`
 
-* Ruby version
+## About
 
-* System dependencies
+This project is created to manage Income & Expenditure statements, allowing users to create several reports and view it in a monthly basis.
 
-* Configuration
+## Getting started
 
-* Database creation
+```bash
+# Before building the containers copy the .env.sample file to .env. Change any value if needed.
+cp .env.sample .env
 
-* Database initialization
+# Build and run the containers:
+docker-compose build
+docker-compose up
 
-* How to run the test suite
+# To access the web container(another terminal):
+docker-compose exec web bash
 
-* Services (job queues, cache servers, search engines, etc.)
+# To setup the project just run bin/setup` inside the container.
+bin/setup
 
-* Deployment instructions
+# To stop the project:
+docker-compose down
+```
 
-* ...
+The application is loaded by default on port 4000.
+
+## Quality
+
+We have rspec specs, rubocop and brakeman in this project, we also check zeitwerk loader. Please keep it tidy by running:
+
+```bash
+# Security
+brakeman -A --color
+
+# Loaders integrity
+bin/rails zeitwerk:check
+
+# Autofix ofenses
+rubocop -A
+
+# run all specs
+rspec
+```
+
+PS: If possible run rubocop first, so if any autofix breaks the code, rspec will tell you(probably).
+
+We also use SimpleCov with the min coverage of 80%, so if the coverage drops, the pipeline will break.
+Coverage report can be found at `coverage/index.html`.
+
+
+## FUTURE
+
+- FIX DELETE PROMPT NOT WORKING
+- ADD MONTHLY PAGINATION
+- IMPROVE FE
+- MOVE CALCULATIONS TO AN ASYNC APPROACH(workers||actioncable)
+- USE PRESENTERS TO REMOVE LOGIC FROM VIEWS
+- IMPROVE/ADD/REFAC SPECS
