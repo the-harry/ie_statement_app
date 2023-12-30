@@ -28,3 +28,10 @@ StatementItem.create(
 StatementItem.create(
   title: 'Loan Repayment', amount: 1000.0, transaction_type: 'expenditure', statement: statement
 )
+
+res = StatementRatingCalculatorService.call(statement.reload.statement_items)
+
+statement.update!(
+  disposable_income: res[:disposable_income],
+  ie_rating: res[:ie_band]
+)
